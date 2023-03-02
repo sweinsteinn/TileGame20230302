@@ -2,10 +2,13 @@ package game.states;
 
 import java.awt.*;
 
+import game.assets.World;
+
 public class GameState extends State {
 
+    World world;
     public GameState() {
-
+        world = new World();
     }
 
     @Override
@@ -15,6 +18,6 @@ public class GameState extends State {
 
     @Override
     public void render(Graphics g) {
-
+        world.render(g);
     }
 }

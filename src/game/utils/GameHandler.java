@@ -4,6 +4,8 @@ import gfx.assets.Display;
 import java.awt.image.BufferStrategy;
 import java.awt.Graphics;
 
+import game.states.*;
+
 public class GameHandler {
 
     private BufferStrategy bufferStrategy;
@@ -15,6 +17,7 @@ public class GameHandler {
     public static final int SCREEN_HEIGHT = 800;
     private final String GAME_TITLE = "School Appropriate Game Title";
 
+    State currentState = new GameState();
     public static void main(String[] args) {
         GameHandler game = new GameHandler();
         game.init();
@@ -29,11 +32,16 @@ public class GameHandler {
 
     }
 
-    private void render() {
+    private void render(Graphics g) {
         bufferStrategy = display.getCanvas().getBufferStrategy();
+        if(bufferStrategy == null){
+            display.getCanvas().createBufferStrategy(3);
+            return;
+        }
         g = bufferStrategy.getDrawGraphics();
-        g.clearRect(0,0,SCREEN_HEIGHT,SCREEN_WIDTH);
+        g.clearRect(0,0,SCREEN_WIDTH, SCREEN_HEIGHT);
 
+        currentState.render(g);
 
         bufferStrategy.show();
         g.dispose();
@@ -56,7 +64,7 @@ public class GameHandler {
 
             if(delta >= 1){
                 tick();
-                render();
+                render(g);
                 ticks++;
                 delta--;
             }
