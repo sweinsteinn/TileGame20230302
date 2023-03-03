@@ -1,5 +1,6 @@
 package game.assets;
 
+import game.utils.FileToStringLoader;
 import game.utils.WorldGenerator;
 import gfx.assets.WorldTile;
 import gfx.utils.ImageHandler;
@@ -22,8 +23,11 @@ public class World {
                                       {1, 1, 7, 1, 1},
                                       {1, 1, 1, 1, 1}};
 
-    public World() {
-        worldGenerator = new WorldGenerator(10, 10);
+    public World(int worldRows, int worldCols) {
+        this.worldRows = worldRows;
+        this.worldCols = worldCols;
+
+        worldGenerator = new WorldGenerator(worldRows, worldCols);
         imageHandler = new ImageHandler();
     }
 
@@ -45,5 +49,39 @@ public class World {
         }
         return tile;
     }
+
+    private void loadWorld(String path) {
+        String file = FileToStringLoader.loadFileAsString(path);
+        String[] tokens = file.split("\\s+");
+
+        worldTileArray = new int[worldRows][worldCols];
+
+        for(int r = 0; r < worldRows; r++) {
+            for(int c = 0; c < worldCols; c++) {
+                worldTileArray[c][r] = FileToStringLoader.parseInt(tokens[r + c * worldCols]);
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

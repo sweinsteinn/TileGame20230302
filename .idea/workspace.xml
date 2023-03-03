@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be850abd-3620-48a3-b410-5ba063d761c0" name="Changes" comment="file generation">
+      <change afterPath="$PROJECT_DIR$/src/game/utils/FileToStringLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/game/assets/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/assets/World.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/utils/GameHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/utils/GameHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gfx/utils/ImageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gfx/utils/ImageHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/states/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/states/GameState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
