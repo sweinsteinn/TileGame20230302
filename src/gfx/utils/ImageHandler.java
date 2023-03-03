@@ -1,16 +1,25 @@
 package gfx.utils;
 
+import game.assets.World;
 import gfx.assets.WorldTile;
 import java.awt.image.BufferedImage;
 
 public class ImageHandler {
-    public static ImageHandler imageHandler = null;
+    //singleton field
+    //public static ImageHandler imageHandler = null;
 
     // actual pixel size of sprite on sheet
-    private final int SPRITE_TILE_WIDTH = 64, SPRITE_TILE_HEIGHT = 64;
+    private static final int SPRITE_TILE_WIDTH = 64, SPRITE_TILE_HEIGHT = 64;
 
     private WorldTile[] worldTileList;
 
+    public ImageHandler() {
+        worldTileList = new WorldTile[100];
+        createWorldTiles();
+    }
+
+    /*
+    // singleton constructor and getter
     private ImageHandler() {
         worldTileList = new WorldTile[1024];
         createWorldTiles();
@@ -22,6 +31,8 @@ public class ImageHandler {
         }
         return imageHandler;
     }
+
+     */
     private void createWorldTiles() {
         BufferedImage primaryColorSheet = ImageLoader.loadImage("/primaryColorSheet.png");
 
@@ -73,11 +84,11 @@ public class ImageHandler {
         return worldTileList[id];
     }
 
-    public int getSPRITE_TILE_WIDTH() {
+    public static int getSPRITE_TILE_WIDTH() {
         return SPRITE_TILE_WIDTH;
     }
 
-    public int getSPRITE_TILE_HEIGHT() {
+    public static int getSPRITE_TILE_HEIGHT() {
         return SPRITE_TILE_HEIGHT;
     }
 }

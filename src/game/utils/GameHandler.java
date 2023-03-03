@@ -8,6 +8,8 @@ import game.states.*;
 
 public class GameHandler {
 
+    public static GameHandler gameHandler = null;
+
     private BufferStrategy bufferStrategy;
     private Graphics g;
 
@@ -17,14 +19,25 @@ public class GameHandler {
     public static final int SCREEN_HEIGHT = 800;
     private final String GAME_TITLE = "School Appropriate Game Title";
 
-    State currentState = new GameState();
+    State currentState;
+
+    private GameHandler() {}
+
+    public static GameHandler getGameHandler() {
+        if(gameHandler == null) {
+            gameHandler = new GameHandler();
+        }
+        return gameHandler;
+    }
     public static void main(String[] args) {
-        GameHandler game = new GameHandler();
-        game.init();
+        GameHandler.getGameHandler().init();
     }
 
     private void init() {
         display = new Display(GAME_TITLE, SCREEN_HEIGHT, SCREEN_WIDTH);
+
+        currentState = new GameState();
+
         run();
     }
 
@@ -32,7 +45,7 @@ public class GameHandler {
 
     }
 
-    private void render(Graphics g) {
+    private void render() {
         bufferStrategy = display.getCanvas().getBufferStrategy();
         if(bufferStrategy == null){
             display.getCanvas().createBufferStrategy(3);
@@ -64,13 +77,13 @@ public class GameHandler {
 
             if(delta >= 1){
                 tick();
-                render(g);
+                render();
                 ticks++;
                 delta--;
             }
 
             if(timer >= 1000000000){
-                System.out.println("FPS: " + ticks);
+                // System.out.println("FPS: " + ticks);
                 ticks = 0;
                 timer = 0;
             }
