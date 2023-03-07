@@ -15,15 +15,24 @@ public class WorldGenerator {
 
         worldMap2DArr = new int[worldRows][worldColumns];
 
-        //testing purposes
-        for(int r = 0; r < worldMap2DArr.length; r++) {
-            for(int c = 0; c < worldMap2DArr[r].length; c++) {
-                worldMap2DArr[r][c] = (int)(Math.random()*10);
-            }
-        }
+        setWater();
+
+
 
         FileGenerator.getFileGenerator().createFile(WORLD_FULL_DIRECTORY_NAME, FileGenerator.getFileGenerator().intArr2DToString(worldMap2DArr));
 
+    }
+
+    private void setWater() {
+        for(int r = 0; r < worldMap2DArr.length; r++) {
+            for(int c = 0; c < worldMap2DArr[r].length; c++) {
+                worldMap2DArr[r][c] = 9;
+            }
+        }
+    }
+
+    public String getWORLD_FULL_DIRECTORY_NAME() {
+        return WORLD_FULL_DIRECTORY_NAME;
     }
 
 }
