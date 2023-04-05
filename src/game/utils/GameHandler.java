@@ -15,8 +15,8 @@ public class GameHandler {
 
     private Display display;
 
-    public static final int SCREEN_WIDTH = 1200;
-    public static final int SCREEN_HEIGHT = 800;
+    public static final int SCREEN_WIDTH = 768;
+    public static final int SCREEN_HEIGHT = 480;
     private final String GAME_TITLE = "School Appropriate Game Title";
 
     State currentState;
@@ -35,6 +35,7 @@ public class GameHandler {
 
     private void init() {
         display = new Display(GAME_TITLE, SCREEN_HEIGHT, SCREEN_WIDTH);
+        display.getFrame().addKeyListener(KeyManager.getKeyManager());
 
         currentState = new GameState();
 
@@ -42,6 +43,8 @@ public class GameHandler {
     }
 
     private void tick() {
+
+        currentState.tick();
 
     }
 
@@ -83,7 +86,7 @@ public class GameHandler {
             }
 
             if(timer >= 1000000000){
-                // System.out.println("FPS: " + ticks);
+                //System.out.println("FPS: " + ticks);
                 ticks = 0;
                 timer = 0;
             }

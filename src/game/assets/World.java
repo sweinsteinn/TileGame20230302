@@ -67,7 +67,7 @@ public class World {
 
         for(int r = 0; r < worldRows; r++) {
             for(int c = 0; c < worldCols; c++) {
-                worldTileArray[c][r] = FileToStringLoader.parseInt(tokens[r + c * worldCols]);
+                worldTileArray[r][c] = FileToStringLoader.parseInt(tokens[r + c * worldCols]);
             }
         }
     }

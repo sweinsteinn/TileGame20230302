@@ -44,6 +44,11 @@ public class ImageHandler {
         WorldTile whiteTile = new WorldTile(white, 1);
         setWorldTile(whiteTile);
 
+        BufferedImage black = primaryColorSheet.getSubimage(SPRITE_TILE_WIDTH*2, 0, SPRITE_TILE_WIDTH, SPRITE_TILE_HEIGHT);
+        WorldTile blackTile = new WorldTile(black, 2);
+        blackTile.setSolid(true);
+        setWorldTile(blackTile);
+
         BufferedImage grey_0 = primaryColorSheet.getSubimage(0, SPRITE_TILE_HEIGHT, SPRITE_TILE_WIDTH, SPRITE_TILE_HEIGHT);
         WorldTile grey_0Tile = new WorldTile(grey_0, 3);
         setWorldTile(grey_0Tile);
